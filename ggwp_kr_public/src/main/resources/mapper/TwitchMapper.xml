@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ggwp.twitch">
+	<select id="selectTwitchClip" resultType="map">
+		SELECT *
+		FROM
+		clip
+		order by datetime desc
+		,RAND()
+	</select>
+
+	<insert id="insertTwitchClip" parameterType="map">
+		INSERT INTO
+		clip
+		(
+			`video_id`
+			, `title`
+			, `url`
+			, `game_id`
+			, `creator_id`
+			, `created_datetime`
+			, `creator_at`
+			,`broadcaster_id`
+			,`thumbnail_url`
+			,`language`
+			, `view_count`
+		)
+		VALUES 
+		(
+			#{video_id},
+			#{title},
+			#{embed_url},
+			#{game_id},
+			#{creator_id},
+			now(),
+			#{creator_at},
+			#{broadcaster_id},
+			#{thumbnail_url},
+			#{language},
+			#{view_count}
+		)
+
+	</insert>
+</mapper>

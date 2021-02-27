@@ -1,0 +1,209 @@
+<!--
+            www.ggwp.kr@gmail.com
+==================================================
+  __ _  __ _                         _  _   __ _
+ / _` |/ _` | __        __ __ _     | |/ / | '_ |
+  (_| | (_| | \ \  __  / /| '_ |    | ' /  | |_)/
+ \__, |\__, |  \ \/  \/ / | |_)| _  | . \  | ._ \ 
+ |___/=|___/=   \__/\__/  | .__|(_) |_|\_\ |_| \_\
+========================= |_|=====================
+ZZZZZZZZZZZZZZZZZZZZZZZZZZE9ZZZZZZZZZZZZZZZZZZZZZZ
+ZZZZZZZZZZZZZZZZZZZz, DZ5    j9ZZZZZZZZZZZZZZZZZZZ
+ZZZZZZZZZZZZZZZ9j  wWzEEZZZZDW, ,zZZZZZZZZZZZZZZZZ
+ZZZZZZZZZZZZD   wyZZZDjW5Bwj9ZZBwwD9BZZZZZZZZZZZZZ
+ZZZZZZZZZZZjwZZZZZZBWw8yDEE5WWBZZZy5BEZZZZZZZZZZZZ
+ZZZZZZZZZZZZZZZBWWjDZZZw8ZzZZZzWWyBZ95BZZZZZZZZZZZ
+ZZZZZZZZZZZ    BZZZ5jwjzZZD wW5ZZZ8,  wZZZZZZZZZZZ
+ZZZZZZZZZZZ yyw   WZZZ5jz9Z9ZEZy    BEZZZZZZZZZZZZ
+ZZZZZZZZZZZ jj8ZEy    ZzDZ E5   WEZZZZZZZZZZZZZZZZ
+ZZZZZZZZZZZ jWDE5ZZ9z E ZDZyw,ZZZZZ8y ZZZZZZZZZZZZ
+ZZZZZZZZZZZ yWDEZjEZZZZZ8 Z y Z Z  ,j ZZZZZZZZZZZZ
+ZZZZZZZZZZZ yWjyZ   5zZBZ,Z 5 ZwZ DW5 ZZZZZZZZZZZZ
+ZZZZZZZZZZZ wWZZZ89,j Z Z Z 5 ZDZZZwj ZZZZZZZZZZZZ
+ZZZZZZZZZZZZ   wEZZw5 Z,Z Z 5,ZZEzw  yZZZZZZZZZZZZ
+ZZZZZZZZZZZZZ5    ,W5 Z Z Z 5WW     8ZZZZZZZZZZZZZ
+ZZZZZZZZZZZZZZZZ8w    Z Z Z ,   yEZZZZZZZZZZZZZZZZ
+ZZZZZZZZZZZZZZZZZZZZW8ZZZZZB BZZZZZZZZZZZZZZZZZZZZ
+ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ
+ZZZZZZZEZZZZZZZZZZzZZZZZZZZZZZZZZZZZEZZZZZZZZZZZZZ
+ZZZZB      ZZZZ      DZZB  ZZ   ZZ  8ZZy      ZZZZ
+ZZZ9  ZZZZZZZZ  5ZZZZZZZZ, 9Z W ZE WZZZz ZZZ  ZZZZ
+ZZZz  ZZB  zZZ  zZZD  ZZZZ ,, Z ww ZZZZz     BZZZZ
+ZZZZW   W  8ZZZ    w  ZZZZ5  zZD  5ZZZZy jZZZZZZZZ
+ZZZZZZZBDZZZZZZZZ8B8ZZZZZZZ5DZZZD5ZZZZZZ9ZZZZZZZZZ
+-->
+<!DOCTYPE html>
+<html lang="kr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="GGWP - Good Game Well Played! Best Game Clip">
+    <meta name="author" content="www.ggwp.kr@gmail.com">
+    <meta name="keyword" content="ggwp">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.ggwp.kr">
+    <meta property="og:title" id="ogtitle" content="GGWP - Good Game Well Played! Best Game Clip">
+    <meta property="og:description" id="ogdesc" content="GGWP - Good Game Well Played! Best Game Clip">
+    <meta property="og:image" id="ogimg" content="https://www.ggwp.kr/img/logo.png">
+
+    <title>GGWP - Good Game Well Played! Best Game Clip</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/brands.min.css" />
+    <!-- Custom styles for this template -->
+    <!-- <link href="css/thumbnail-gallery.css" rel="stylesheet"> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@12.0.2/dist/lazyload.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script type="text/javascript">
+
+    function getClips(gameid)
+    {
+        var apiurl = 'https://ggwp-kr.fastapi.shop/api/v1/get/clip';
+        if(gameid != 'all')
+        {
+            apiurl = 'https://ggwp-kr.fastapi.shop/api/v1/clip/game/'+gameid;
+        }
+        $("#clipList").empty();
+        $.get(apiurl, function (data, status) {
+                // console.log(data);
+                // console.log(status);
+                if ("success" == status) {
+                    $.each(data, function (i, item) {
+                        var tempTag =
+                            '<div class="col-lg-3 col-md-4 col-6">' + item.title
+                            + '<a href="' + item.url + '" class="d-block mb-4 h-100">'
+                            + '<img class="img-fluid img-thumbnail lazy" src="https://via.placeholder.com/240x140?text=GGWP.KR" data-src="' + item.thumbnail_url + '" alt=""></a></div>';
+                        $("#clipList").append(tempTag);
+                    });
+                    
+                    var lazyLoadInstance = new LazyLoad({
+                        elements_selector: ".lazy"
+                    });
+                    if (lazyLoadInstance) {
+                        lazyLoadInstance.update();
+                    }
+                }
+            });
+    }
+        $(document).ready(function () {
+            getClips('all');
+            $( ".ctg" ).click(function(e,h ) {
+                getClips(this.value);
+            });
+
+            $( ".slicklist" ).click(function(e,h ) {
+                getClips(this.value);
+            });
+
+            var apiurl = 'https://ggwp-kr.fastapi.shop/api/v1/get/games/all';
+            $.get(apiurl, function (data, status) {
+                if ("success" == status) {
+                    $.each(data, function (i, item) {
+                        var tempTag ='<a href="" class="slicklist" value="'+ item.idx+'"><img class="img-fluid img-thumbnail lazy" src="https://via.placeholder.com/130x190?text=GGWP.KR" data-src="' + item.boxArtUrl + '" alt=""></a></div>';
+                        $("#clipList").append(tempTag);
+                    });
+                    
+                    var lazyLoadInstance = new LazyLoad({
+                        elements_selector: ".lazy"
+                    });
+                    if (lazyLoadInstance) {
+                        lazyLoadInstance.update();
+                    }
+                }
+            });
+
+            $('.slickList').slick({
+                centerMode: true,
+                centerPadding: '60px',
+                slidesToShow: 3,
+                responsive: [
+                    {
+                    breakpoint: 768,
+                    settings: {
+                        arrows: false,
+                        centerMode: true,
+                        centerPadding: '40px',
+                        slidesToShow: 3
+                    }
+                    },
+                    {
+                    breakpoint: 480,
+                    settings: {
+                        arrows: false,
+                        centerMode: true,
+                        centerPadding: '40px',
+                        slidesToShow: 1
+                    }
+                    }
+                ]
+            });
+        });
+    </script>
+    <style>
+        .main-logo {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="main-logo">
+         
+        </div>
+        <!-- <hr class="mt-2 mb-5"> -->
+        <hr/>
+        <button type="button" value="all" class="ctg btn btn-outline-primary">All</button>
+        <button type="button" value="513143" class="ctg btn btn-outline-secondary">TFT</button>
+        <button type="button" value="493057" class="ctg btn btn-outline-warning">PUBG</button>
+        <button type="button" value="33214" class="ctg btn btn-outline-success">Fortnite</button>
+        <button type="button" value="29595" class="ctg btn btn-outline-danger">DOTA2</button>
+        <button type="button" value="460630" class="ctg btn btn-outline-warning">R6:Siege</button>
+        <button type="button" value="21779" class="ctg btn btn-outline-info">LOL</button>
+	    <button type="button" value="497057" class="ctg btn btn-outline-dark">Destiny2</button>
+	    <button type="button" value="514790" class="ctg btn btn-outline-warning">LOR</button>
+        <hr/>
+        <div class="gameList">
+            
+        </div>
+        <div id="clipList" class="row text-center text-lg-left">
+            <!-- <div class="col-lg-3 col-md-4 col-6">
+                <a href="#" class="d-block mb-4 h-100">
+                    <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
+                </a>
+            </div> -->
+        </div>
+        <!-- Footer -->
+        <footer class="py-5 bg-dark">
+            <div class="container">
+                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({
+                        google_ad_client: "ca-pub-4095321228715942",
+                        enable_page_level_ads: true
+                    });
+                </script>
+            </div>
+            <div class="container">
+                <p class="m-0 text-center text-white">Copyright &copy; www.ggwp.kr@gmail.com</p>
+                <p class="m-0 text-center text-white">
+                    <a class="btn btn-github btn-outline-light" href="https://github.com/ggwp-kr/ggwp-kr.github.io"><i
+                            class="fab fa-github fa-1x" aria-hidden="true"></i></a>
+                    <a class="btn btn-outline-light" href="https://open.kakao.com/o/swJsgpsb"><i
+                            class="fas fa-comment fa-1x"></i></a>
+                </p>
+            </div>
+            <!-- /.container -->
+        </footer>
+    </div>
+    <script type="text/javascript">
+		
+     </script>
+</body>
+</html>
